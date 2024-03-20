@@ -1,0 +1,77 @@
+// LES majuscules ne sont pas necessaire dans mysql, a premiere vue...
+
+pour se connecter a mysql 
+-  mysql -u root -p
+
+pour importer un fichier sql dans mysql
+- \. fichier.sql
+
+montrer les base de donees;
+- SHOW databases;
+
+montrer les tables 
+ - SHOW tables ;
+
+ montrer les colones
+ - SHOW columns ;
+ 
+ 
+ montrer les utulisateurs
+ - Select * from users ;
+ 
+ peu importe le username pour l'instant(02/11/2023) le mot de passe c'est juste d'appuyer sur le bouton entree
+ 
+ 
+ 
+ ----------------- COURS -----------------------
+ 
+ les requetes en sql sont de type:
+ Select ce_que_tu_veut_de_la_table from la_table_d'ou_tu_veut_prendre;
+ 
+ 
+ 
+ ** DISTINCT
+ - Pour forcer l'élimination des doublons dans un SELECT, il faut utiliser le mot-clé DISTINCT avant la liste des colonnes.
+ 
+ ** WHERE
+ - Avec le WHERE, on peut spécifier une condition SQL pour sélectionner des lignes parmi celles
+disponibles.
+
+** OPERATEUR LOGIQUE
+- avec le AND on prend en compte deux condition avec le OR on prend en compte l'un ou l'autre des conditions
+- il ya aussi le in a utiliser quand on veut selection plusieur element d'un atribut
+  // genre quand tu veut plusieur id:  Select * from tables_que_tu_veut where id in (1,7,8)
+  
+** option de requete
+  il ya between qui veut dire entre ( between 1 AND 3)
+  il ya limit nbr qui affiche seulement entre 1 et nbr;
+  il ya order by qui trie par ordre croissant dans le cas ou on veut decroissant on met desc apres l'attribut
+  // Select attribut from tables1 order by atribut desc;
+  
+
+
+*********** PRODUIT CARTESIEN
+un produit cartesien c'est genre une operation lofique qui produit une sorte de nouvele table formee a partir des combinaison possibles des elements des deux tables en entreé.
+
+- la jointure naturelle ( NATURAL JOIN) est un produit cartesiien qui permet la formulation simplifiee dans le cans ou les deux element des 2 tables portent le meme nom.
+// genre tables1 (avec nom,prenom, id_perssone) tables2 (age, naissance, id_perssone)4
+// la on peut faire un produit cartesien avec id_perssone
+// Select * from tables1 NATURAL JOIN tables2;  ( ps dans cas on aura come reponse les element de table 1 donc age naissance et id, mais seulement de ceux qui on un id identique dans tables 2)
+
+- la jointure inner (INNER JOIN) on utilise apres la table a la place du from soit
+ - using() si l'attribut de jointure s'appele de la meme maniere dans les 2 tables
+   	//genre en reprenant l'example d'en haut
+   	// Select * from tables1 INNER JOIN tables2 using(attributdejointure)
+ - on elements1 = element2 s'appelle differement dans les  2 tables concerne
+      	//genre en reprenant l'example d'en haut
+   	// Select * from tables1 INNER JOIN tables2 on attributdeJointure1 = attributs de jointure2	
+   	
+   	
+********** RENOMMAGE
+En SQL, le renommage peut être réalisé au niveau de colonnes et/ou de tables. Mais belec La
+syntaxe n’est pas la même
+
+// quand tu veut select un element d'un colomne l'element et la colomne s'affiche , mais genre si tu veut select un element d'une colomne mais changez le nom la colomne tu fais as
+// genre : select attributs as nom_Changeé_De_L'attributs from la table;
+
+

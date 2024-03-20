@@ -1,0 +1,249 @@
+					Breviaire TypeScript
+
+******************************************************************************
+---------- Argument de Programme --------------------------
+
+Variable envoyeé au moment de l'execution
+
+On va utiliser la variable process.argv[i];
+
+Stocke les arguments dans un tableau:  (\\ ex:  node test.js Link Zelda)
+- si i = 0 ( ce sera le node)
+- si i = 1 ( ce sera le fichier JS)
+- si i = 2 (ce sera Link)
+- si i = 3 (ce sera Zelda)
+prends la valeur 'undefined' si pas de valeur a l'index.
+
+process.argv stock uniquement des string
+en cas de besoin de conversion vers Int (number) il faut utiliser parseInt(process.argv[i])
+
+
+******************************************************************************
+---------- Les Objets ---------------------------------------------------
+
+- Entité qui possède, un nom , des attributs et des methodes.
+
+- Un attribut est une variable, il possede un nom et une valeur
+
+- Une methode est une fonction appelable via l'objet
+
+example :
+	const book = {
+	name : '...'
+	author : '....'
+	livre :
+	}
+Pour acceder a un attribut  = objet.attribut (example: book.author)
+
+---- Interface 
+
+- Permet de creer un modele utilisable pour la gestion des types avec TypeScript
+
+- Fournit une definition du type
+
+example :
+
+interface Vehicule {
+name: string
+age: number
+}
+
+const walid : Character = {    (\\ ne pas oublier le =)
+name: 'Walid',
+age : 22,
+};       (\\ ne pas oublier le ;)
+
+const LepoteDeWalid : Character = {
+name: 'PeuImporte',
+age: 22,
+};
+
+et on peut continuer come ca et en creer plein
+
+dans le cas ou un objet ou une interface est un tableau d'objet, presque rien ne change a part des crochets.
+
+const book = [  (\\ dans cet example la, c'est un objet et non une interface.)
+{
+name: '...',
+author: '...',
+date: ...,
+},
+name: '...',
+author: '...',
+date: ...,
+},
+[...]  ( \\ on peut en mettre autant qu'on veut.)
+
+}]; (\\ puis on met fin a l'objet)
+
+pour appeler un attribut on utilise  book[i].attributs
+
+on peut aussi creer un tableau d'objet a partir d'une interface
+
+example : (\\ on va reprendre l'example vehicule)
+
+const vehicule: Vehicule[] = [ 
+citroen,
+renault,
+...,    for i, char in enumerate(s)
+        switch = {
+            '(': 1
+            '[': 3
+            '{': 5
+            '\"': 7
+            '\'': 9
+        }
+
+];            (\\ evidement faudra creer les objets de tyoe vehicule renault et citroen,... avant.)
+
+*******************************************************************************
+
+------------------ Call Backs -----------------------
+les callback sont des fonction dites fonction anonymes ou lambda:
+
+(\\ methode associe aux tableau)
+- forEach()    (\\ permet d'exécuter une fonction donnée sur chaque élément du tableau)
+- sort()      (\\ trie les éléments d'un tableau, dans ce même tableau, et renvoie le tableau)
+- every()    (\\ tester si tous les éléments d'un tableau vérifient une condition donnée fonction passée en argument)
+- find() (\\ renvoie la valeur du premier élément trouvé dans le tableau qui respecte la condition donnée par la fonction de passée en argument)
+
+Syntaxe :
+  -  (params) => body
+  OU
+  -  (params) => {body}
+  
+  example :
+  
+  const tabNombre : number[] = [1,2,3,4,8,7,5]
+  tabNombre.forEach(( nombre: number) => console log(nombre));   (\\ cette ligne est appele fonction flecheé car c'est une sorte de fonction avec une syntaxe plus courte et qu'elle ne possede pas sa propre valeurs.)
+  
+  \\ afiche
+  1
+  2
+  3
+  ...
+  \\
+  
+  
+*******************************************************************************
+
+---------- User Imput -----------------
+
+recuperer du texte que l'utilisateur tape pendant l'execution du programe via l'entre standard ( Le terminal)
+
+Utilisation des methodes de la lib 'readline-sync'
+(\\ evidement c'est une librairie exterieur il faut donc l'importer avant de l'utiliser)
+
+- question  (\\ qui va afficher un message, une question et qui va renvoyer la reponse de l'utilisateur)
+- KeyInYN  (\\ qui va afficher un message une question, avec 2 option de reponse Y (yes) ou N (No) et qui va renvoyer un boolean ( true ou false)
+- KeyInSelect (\\ qui va afficher un message une question ainsi qu'un tableau d'options, et va renvoyer selon la reponse de l'utilisateur a choisi soit l'index de l'option choisi soit -1 si aucune option qui est choisi)
+
+example : ( il faut instaler la librairie avant avec npm install readline-sync si ce n'est pas deja fait)
+const readline = require('readline-sync);
+const answer = redline.question('1+1?');  (\\ on peut ajouter un '\n' qui fera un retour a la ligne avant le user imput)
+
+console.log(answer) (\\ va afficher la reponse)
+
+
+
+*******************************************************************************
+
+--------- File Handing  ------------
+
+
+on utilise la librairie File System ( ... = require('fs');
+permet d'interagir avec des fichiers en local
+
+
+commande:  
+ne pas oublier le 'utf-8' en tant que second argument
+
+- accessSync : verifie si le programme a les droits pour ouvrir les fichiers
+
+- readFileSync : ouvre le fichier pour recuperer son contenu
+
+- WriteFileSync : va ecraser le contenu du fichier et ecrire par dessus
+
+- appendFileSync : ajoute au fichier le contenu
+
+example :  (\\ il faut instaler la librairie avant avec npm install file System si ce n'est pas deja fait)
+const fs = require('fs')
+const contenu = fs.readFileSync('./file.ts', 'utf8');   (\\ va stocker le contenu de file.ts dans contenu)
+
+
+*****************************************************************************************************
+------------- Parsing -------------
+C'est Parcourir du texte pour en retire des informations
+
+en generale on parse avec des formats regularisés :
+- JSON
+- CSV
+- XML
+- ....
+
+---- parser Du JSON ( \\ le Json est un format qui se base beaucoup sur des objets: Cles, valeurs....)
+
+
+JavaScript a quelque fonction natif comme  
+- JSON.parse()   (\\permet de transformer du texte/string en objet JSON)
+- JSON.stringify() (\\ permet de transformer de l'objet Json en texte/string)
+
+
+---- Regex  ( Regular Expression
+
+utiliser pour rechercher des occurences, des carcateres precis dans une chaine de caracteres
+genre :
+- verifier le format d'un email (\\ si il ya bien le @ ou le .)
+- editer du texte en masse (\\ je sais pas encore comment, ?)
+- compter le nombre de fois q'un mot est utiliser (\\ ocurence de texte)	
+
+ !!!!! la doc regex101.com est tres utile !!!!!
+ 
+ 
+ *****************************************************************************************************
+ ----------- Requete --------------------
+ c'est aller chercher une ressource sur un serveur distant ( https par example)
+ 
+ plusieur type de requete :
+ - GET ( aller chercher une ressource)
+ - POST ( pour envoyer quelque chose)
+ - PUT / PATCH ( pour modifer une ressource)
+ - DELETE ( pour supprimer une ressource
+ 
+ On va utiliser la librarie axios (evidement toujours le npm install axios si pas deja fait)
+ la methode get est asynchrone ( peut poser probleme on doit utiliser un .then)
+ response est une variable integreé a axio (je crois) qui va contenire toute les datas de la requetes.
+ 
+ example:
+ 
+ import axios, {AxiosResponse} from 'axios';
+ 
+ axios
+ 	.get('https:...)
+ 	.then((response) => {
+ 		console.log(response);
+ 	});
+ 
+ (// affiche toutes les donees du site web)
+ 
+ dans le cas ou le format de la data recue est connu, il est possible de l'interfacer
+ 
+ genre, example :
+ 
+ import axios, {AxiosResponse} from 'axios';
+ 
+ interface Bonbon { 
+ marque : string,
+ quantiteDeSucre : string
+ }
+ 
+ axios
+ 	.get<Bonbon>('https://Haribo-c'est-bo-la-vie) (\\ evidement dans cet example, le site est compose de plein d'objet bonbon)
+ 	.then((response : AxiosResponse <Bonbon>) => {
+ 		console.log(response.data.marque);
+ 	});
+ 
+ (\\va aficher seulement la marque de tous les objet bonbon du site web)
+ 
+ 
+

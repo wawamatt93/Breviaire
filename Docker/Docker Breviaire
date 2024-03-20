@@ -1,0 +1,13 @@
+pour lancer le docker en mode interactif :
+docker run -it ubuntu bash
+ pour quitter:  exit
+
+liste des containers qui tournent sur la machine:
+docker ps
+
+pour arreter un container:
+docker rm Nomcontainer
+
+pour creer un docker a parir d'un fichier: 
+docker-compose up --build
+

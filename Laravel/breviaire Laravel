@@ -1,0 +1,24 @@
+Laravel simmilaire a java, est sous la forme DOO modele , vue , controioler.
+
+le model n'est pas la base de donee mais contient la base de doneés.
+
+
+lancer le serveur: php artisan serve
+
+permet de voir tous les outil de laravel:  php artisan
+
+permet de lancer un mini serveur dans le shell terminal: php artisan tinker  (et voir l'etat du seveur)
+
+syntaxe des routes :     Route::get('/laroute', function(){  
+				- on peut rajouter des argument a mettre en entree de la route avec:
+					Route::get('/laroute/{argument}', function (argument) {
+   					 return argument;
+					 });
+					 
+					 
+		
+**************** php ****************
+en php on peut mettre es if dans des balise, voici la sintaxe:
+<balise>	@if (isset($variable)	instruction  @else instruction @endif  </balise>   // isset() = is not exist
+
+Regardez dans la doc, les blades directives.
